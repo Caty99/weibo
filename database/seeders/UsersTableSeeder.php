@@ -14,11 +14,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(51)->create();
+        User::factory()->count(50)->create();
 
-        $user = User::find(51);
+        $user = User::find(1);
         $user->name = 'niuniu';
         $user->email = 'niuniu@example.com';
+        $user->password = bcrypt('123456');
         $user->is_admin = true;
         $user->save();
     }
