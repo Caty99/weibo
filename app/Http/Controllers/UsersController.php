@@ -99,7 +99,6 @@ class UsersController extends Controller
             $message->to($to)->subject($subject);
         });
     }
-    }
 
     public function confirmEmail($token)
     {
