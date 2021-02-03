@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Access\HandlesAuthorization;
 class UsersController extends Controller
 {
     public function __construct()
@@ -126,5 +127,10 @@ class UsersController extends Controller
         $users = $user->followers()->paginate(30);
         $title = $user->name . '的粉丝';
         return view('users.show_follow', compact('users', 'title'));
+    }
+
+    public function follow(User $currentUser, User $user)
+    {
+        return $currentUser->id !== $user->id;
     }
 }
